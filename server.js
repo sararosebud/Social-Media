@@ -17,7 +17,6 @@ app.listen(PORT, (request, respond) => {
   console.log(`Our server is live on ${PORT}. Yay!`);
 });
 
-
 // const activity = cwd.includes('18Challenge')
 //   ? cwd.split('/18Challenge/')[1]
 //   : cwd;
