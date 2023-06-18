@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose');
-// const thoughtSchema = require('./Thought')
 
-// email validator regex
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
@@ -31,7 +29,12 @@ const userSchema = new Schema(
                 match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
         }, 
 
-        // thoughts: [thoughtSchema], 
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought',
+            },
+        ],
 
         friends: [
             {
@@ -51,13 +54,13 @@ const userSchema = new Schema(
 
 // Create a virtual property 'friendCount' that retrieves the length of the user's friends array field on query
 
-// userSchema 
-//       .virtual('friendCount')
-//       // Getter
-//       .get(function (){
-//         return `${this.friends}`;
+userSchema 
+      .virtual('friendCount')
+      // Getter
+      .get(function (){
+        return this.friends.length;
 
-//       })
+      });
 
 
 // Initialize  User model
