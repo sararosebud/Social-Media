@@ -81,24 +81,25 @@ module.exports = {
     },
 
     // add a friend to the user's friend list
-    async addFriend(req, res) {
-      try {
-        const user = await User.findOneAndUpdate(
-          { _id: req.params.userId },
-          { $Set: { friends: req.body.userId } }, 
-          { runValidators: true, new: true }
-        );
-    
-        if (!user) {
-          res.status(404).json({ message: 'No user with this ID' });
-        }
-    
-        res.json(user);
-      } catch (err) {
-        res.status(500).json(err);
+      // add a thought reaction
+  async addFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        {_id: req.params.userId  },
+        { $addToSet: { friends: { _id: req.params.userId } }},
+        { runValidators: true, new: true }  
+      ).populate('userId', 'username');
+
+      if (!user) {
+        res.status(404).json({message: 'no friend with this id'});
+
       }
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
     }
-    ,
+  }, 
+    
 
     // delete a freind from the user's friend list
 
