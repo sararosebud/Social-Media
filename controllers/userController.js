@@ -91,11 +91,17 @@ module.exports = {
 
         );
 
-        if (!user);
+        if (!user) {
+          res.status(404).json({ message: 'no user with this id'});
+
+        }
+        res.json(user);
   
       } catch(err) {
         res.status(500).json(err);
       }
+      
+
     },
 
     // delete a freind from the user's friend list

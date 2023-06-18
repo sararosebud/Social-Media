@@ -1,191 +1,30 @@
-const usernames = [
-    "crystalwave23",
-    "blazingspirit98",
-    "midnightjazz77",
-    "aquamarine22",
-    "stellarclouds45",
-    "electricpulse64",
-    "wildflower31",
-    "moonlitdreamer77",
-    "cosmictraveler12",
-    "serenadesongbird",
-    "emeraldgazer88",
-    "aurorabreeze17",
-    "silverarrow56",
-    "whisperingwillow41",
-    "enigmaticdreamer",
-    "lunarlullaby89",
-    "sunshineglimmer",
-    "twilightwanderer",
-    "oceanserenade23",
-    "dreamcatcher42",
-    "crimsonfirefly76",
-    "mysticmoonlight",
-    "amethystsoul99",
-    "songbirdmelody",
-    "stormyseas72",
-    "radiantbeams",
-    "wanderingstarlight",
-    "goldenember47",
-    "whimsicalwanderlust",
-    "velvetnightshade",
-    "blazingphoenix89",
-    "serenemist23",
-    "whisperingechoes",
-    "sapphirebreeze",
-    "charmedgarden87",
-    "hiddenpathways",
-    "crystaldancer44",
-    "lunarillusionist",
-    "emberflame82",
-    "melodicwhispers",
-    "silentshadow56",
-    "enchantedsongbird",
-    "harmoniousdreams",
-    "azureadventure98",
-    "sparklingfirefly",
-    "midnightmystic",
-    "eternalserenity",
-    "secretwhisperer",
-    "starrynightfall",
-    "mysticaljourneys",
-    "whisperinggales",
-    "frozenmelodies",
-    "dreamsofavalon",
-    "solitarywanderer",
-    "celestialmelody",
-    "seraphicflame88",
-    "enchantedlullaby",
-    "shadowedwings42",
-    "glimmersoftly",
-    "whispersofwinter",
-    "crimsonwhisper",
-    "sunsetserenade",
-    "whisperingbrook",
-    "radiantspirit99",
-    "moonlitmeadow",
-    "silvermist84",
-    "aurorasparkle",
-    "mistywhispers",
-    "etherealwanderer",
-    "sapphiremoonlight",
-    "whisperinggaze",
-    "luminousfirefly",
-    "dreamersdelight",
-    "twilightwhisper",
-    "emeraldglimmer",
-    "whisperingmist",
-    "enchantedgarden",
-    "midnightwhisper",
-    "melodicwhispers",
-    "crimsonwhisper",
-    "goldenember47",
-    "mysticaljourneys",
-    "moonlitmeadow",
-    "seraphicflame88",
-    "silvermist84",
-    "starrynightfall",
-    "whispersofwinter",
-    "whisperingmist",
-    "aurorasparkle",
-    "celestialmelody",
-    "dreamersdelight",
-    "emeraldglimmer",
-    "etherealwanderer",
-    "glimmersoftly",
-    "luminousfirefly",
-    "mistywhispers",
-    "radiantspirit99",
-    "shadowedwings42",
-    "twilightwhisper",
-    "whisperingbrook",
-    "whisperinggaze" ,
-];
+const getRandomUsernames = (num) => {
+    const usernames = new Set();
+  
+    while (usernames.size < num) {
+      const username = `username${usernames.size + 1}`;
+      usernames.add(username);
+    }
+  
+    return Array.from(usernames);
+  };
+  
+  const randomUsers = getRandomUsernames(100);
+  console.log(randomUsers);
 
-const randomEmails = [
-    
-        "crystalwave23@example.com",
-        "blazingspirit98@example.com",
-        "midnightjazz77@example.com",
-        "aquamarine22@example.com",
-        "stellarclouds45@example.com",
-        "electricpulse64@example.com",
-        "wildflower31@example.com",
-        "moonlitdreamer77@example.com",
-        "cosmictraveler12@example.com",
-        "serenadesongbird@example.com",
-        "emeraldgazer88@example.com",
-        "aurorabreeze17@example.com",
-        "silverarrow56@example.com",
-        "whisperingwillow41@example.com",
-        "enigmaticdreamer@example.com",
-        "lunarlullaby89@example.com",
-        "sunshineglimmer@example.com",
-        "twilightwanderer@example.com",
-        "oceanserenade23@example.com",
-        "dreamcatcher42@example.com",
-        "crimsonfirefly76@example.com",
-        "mysticmoonlight@example.com",
-        "amethystsoul99@example.com",
-        "songbirdmelody@example.com",
-        "stormyseas72@example.com",
-        "radiantbeams@example.com",
-        "wanderingstarlight@example.com",
-        "goldenember47@example.com",
-        "whimsicalwanderlust@example.com",
-        "velvetnightshade@example.com",
-        "blazingphoenix89@example.com",
-        "serenemist23@example.com",
-        "whisperingechoes@example.com",
-        "sapphirebreeze@example.com",
-        "charmedgarden87@example.com",
-        "hiddenpathways@example.com",
-        "crystaldancer44@example.com",
-        "lunarillusionist@example.com",
-        "emberflame82@example.com",
-        "melodicwhispers@example.com",
-        "silentshadow56@example.com",
-        "enchantedsongbird@example.com",
-        "harmoniousdreams@example.com",
-        "azureadventure98@example.com",
-        "sparklingfirefly@example.com",
-        "midnightmystic@example.com",
-        "eternalserenity@example.com",
-        "secretwhisperer@example.com",
-        "starrynightfall@example.com",
-        "mysticaljourneys@example.com",
-        "whisperinggales@example.com",
-        "frozenmelodies@example.com",
-        "dreamsofavalon@example.com",
-        "solitarywanderer@example.com",
-        "celestialmelody@example.com",
-        "seraphicflame88@example.com",
-        "enchantedlullaby@example.com",
-        "shadowedwings42@example.com",
-        "glimmersoftly@example.com",
-        "whispersofwinter@example.com",
-        "crimsonwhisper@example.com",
-        "sunsetserenade@example.com",
-        "whisperingbrook@example.com",
-        "radiantspirit99@example.com",
-        "moonlitmeadow@example.com",
-        "silvermist84@example.com",
-        "aurorasparkle@example.com",
-        "mistywhispers@example.com",
-        "etherealwanderer@example.com",
-        "sapphiremoonlight@example.com",
-        "whisperinggaze@example.com",
-        "luminousfirefly@example.com",
-        "dreamersdelight@example.com",
-        "twilightwhisper@example.com",
-        "emeraldglimmer@example.com",
-        "whisperingmist@example.com",
-        "enchantedgarden@example.com",
-        "midnightwhisper@example.com",
-        "melodicwhispers@example.com",
-       
-      
-];
+const getRandomEmails = (num) => {
+    const emails = new Set();
+  
+    while (emails.size < num) {
+      const email = `email${emails.size + 1}@example.com`;
+      emails.add(email);
+    }
+  
+    return Array.from(emails);
+  };
+  
+  const randomEmails = getRandomEmails(100);
+  console.log(randomEmails);
 
 const randomThoughts = [
     "The sunsets always remind me of the beauty in endings.",
@@ -352,22 +191,49 @@ const randomReactions = [
 
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const getRandomUser = () =>
-`${getRandomArrItem(usernames)}`;
+const getRandomUser = () => {
+    if (randomUsers.length === 0) {
+      return "defaultUsername";
+    }
+  
+    const usedUsernames = new Set(randomUsers);
+    let username = getRandomArrItem(randomUsers);
+  
+    // Generate a new username if it has already been used
+    while (usedUsernames.has(username)) {
+      username = getRandomArrItem(randomUsers);
+    }
+  
+    return username;
+  };
+  
+
 
 const getRandomEmail = (int) => {
-    if (int === 1) {
-        return getRandomArrItem(randomEmails);
-    }
     const results = [];
+    const usedEmails = new Set(); // Keep track of used email addresses
+  
     for (let i = 0; i < int; i++) {
-        results.push({
-          email: getRandomArrItem(randomEmails),
-          username: getRandomUser(),
-        });
+      let email = getRandomArrItem(randomEmails);
+  
+      // Generate a new email if it has already been used
+      while (usedEmails.has(email)) {
+        email = getRandomArrItem(randomEmails);
       }
-      return results;
-    };
+  
+      usedEmails.add(email); // Add the email to the usedEmails set
+  
+      const username = getRandomUser();
+      results.push({
+        email,
+        username,
+      });
+    }
+  
+    return results;
+  };
+  
+  
 
 const getRandomThought = (int) => {
         if (int === 1) {
@@ -384,22 +250,29 @@ const getRandomThought = (int) => {
           }
           return results;};
 
-const getReactions = (int) => {
-            if (int === 1) {
-                return getRandomArrItem(randomReactions);
+          const getReactions = (int, depth = 1) => {
+            if (depth === int) {
+              return [{
+                reactionBody: getRandomArrItem(randomReactions),
+                createdAt: Date.now(),
+                username: getRandomUser(),
+              }];
             }
+          
             const results = [];
+          
             for (let i = 0; i < int; i++) {
-                results.push({
-                  reactionBody: getRandomArrItem(randomReactions),
-                  createdAt: Date.now,
-                  reactions: [...getReactions(3)],
-                  username: getRandomUser(),
+              results.push({
+                reactionBody: getRandomArrItem(randomReactions),
+                createdAt: Date.now(),
+                reactions: getReactions(int, depth + 1),
+                username: getRandomUser(),
+              });
+            }
+          
+            return results;
+          };
+          
     
-                });
-              }
-              return results;
-            };
-    
-
+module.exports = {getRandomUser, getRandomThought, getRandomEmail, getReactions}
   
