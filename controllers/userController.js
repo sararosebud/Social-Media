@@ -98,7 +98,7 @@ module.exports = {
           { _id: userId, friends: { $ne: friendUserId } }, // Ensure the friend is not already in the friends array
           { $push: { friends: friendUserId } },
           { runValidators: true, new: true }
-        ).populate('friends', 'username');
+        )
     
         if (!user) {
           return res.status(404).json({ message: 'No user with this ID' });
