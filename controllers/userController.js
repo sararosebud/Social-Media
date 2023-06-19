@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought }  = require("../models");
+const { Types } = require('mongoose');
 
 
 
@@ -82,39 +83,56 @@ module.exports = {
 
     // add a friend to the user's friend list
 
+ 
+
+  
     async addFriend(req, res) {
       try {
+        const { userId } = req.params;
+        const { friendUserId } = req.body; 
+        if (!Types.ObjectId.isValid(friendUserId)) {
+          return res.status(400).json({ message: 'Invalid friendUserId' });
+        }
+    
         const user = await User.findOneAndUpdate(
-        {_id: req.params.userId },
-        { $addToSet: { friends: req.body } },
-        { runValidators: true, new: true}
-
-        );
-
-        if (!user);
-  
-      } catch(err) {
+          { _id: userId, friends: { $ne: friendUserId } }, // Ensure the friend is not already in the friends array
+          { $push: { friends: friendUserId } },
+          { runValidators: true, new: true }
+        )
+    
+        if (!user) {
+          return res.status(404).json({ message: 'No user with this ID' });
+        }
+    
+        res.json(user);
+      } catch (err) {
         res.status(500).json(err);
       }
-    },
+    }
+    
+    , 
+    
 
     // delete a freind from the user's friend list
 
     async removeFriend(req, res) {
       try {
         const user = await User.findOneAndUpdate(
-          {_id: req.params.userId },
-          { $pull: { friends: {friendId: req.params.friendId}}},
-          { runValidators: true, new: true},
-
-          
-          );
-          if (!user);
-  
-        } catch(err) {
-          res.status(500).json(err);
+          { _id: req.params.userId },
+          { $pull: { friends: { friendId: req.params.friendId } } },
+          { runValidators: true, new: true }
+        );
+    
+        if (!user) {
+          return res.status(404).json({ message: 'No user with this ID' });
         }
-      },
+    
+        res.json(user);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    }
+    ,
     };
 
 
