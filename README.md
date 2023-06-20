@@ -24,6 +24,8 @@ Fork this repository, then open an integrated terminal from the root folder of t
 ## Usage
 <a name="usage"></a>
 Watch this [DEMO](https://watch.screencastify.com/v/IMhYRSk4V9G8JJpA5HZy) to see an overview of how this API works.
+![ADD USER](https://github.com/sararosebud/Social-Media/assets/113923132/f1f8c20f-11cc-4e73-8716-d33ff6fe2512)
+![image](https://github.com/sararosebud/Social-Media/assets/113923132/29d5affe-5cdc-4ab5-b4e5-beac05f6c15f)
 
 ## License
 This project is licensed under the MIT License license. Click [here](https://opensource.org/licenses/MIT) for more information.
