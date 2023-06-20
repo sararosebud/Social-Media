@@ -117,10 +117,12 @@ module.exports = {
 
     async removeFriend(req, res) {
       try {
-        const user = await User.findOneAndUpdate(
-          { _id: req.params.userId },
-          { $pull: { friends: { friendId: req.params.friendId } } },
-          { runValidators: true, new: true }
+        const { userId, friendId } = req.params;
+    
+        const user = await User.findByIdAndUpdate(
+          userId,
+          { $pull: { friends: friendId } },
+          { new: true }
         );
     
         if (!user) {
@@ -132,6 +134,7 @@ module.exports = {
         res.status(500).json(err);
       }
     }
+    
     ,
     };
 
