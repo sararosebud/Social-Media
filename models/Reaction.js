@@ -1,4 +1,5 @@
 const { Schema, Types } = require('mongoose');
+const moment = require('moment');
 
 const reactionSchema = new Schema(
     {
@@ -22,20 +23,22 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: function () {
-                return this._createdAt.toLocaleString(); // Format the timestamp
-            },
+            
+
         },
         
 
     },
     {
         toJSON: {
-          getters: true,
-        },
-        id: false,
-      }
-
-);
-
-module.exports = reactionSchema;
+            getters: true,
+            transform: (doc, ret) => {
+              ret.createdAt = moment(ret.createdAt).format('MM-DD-YYYY HH:mm'); // Format the timestamp
+              return ret;
+            },
+          },
+          id: false,
+        }
+      );
+      
+      module.exports = reactionSchema;
